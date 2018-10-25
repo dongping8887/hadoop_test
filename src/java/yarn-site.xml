@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+<configuration>
+
+    <!-- Site specific YARN configuration properties -->
+    <property>
+        <name>yarn.resourcemanager.ha.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.cluster-id</name>
+        <value>dwhdp</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.ha.rm-ids</name>
+        <value>rm1,rm2</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.hostname.rm1</name>
+        <value>hadoop01</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.hostname.rm2</name>
+        <value>hadoop02</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.recovery.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.address.rm1</name>
+        <value>hadoop01:23188</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.webapp.https.address.rm1</name>
+        <value>hadoop01:23188</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.address.rm1</name>
+        <value>hadoop01:23125</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.scheduler.address.rm1</name>
+        <value>hadoop01:23130</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.address.rm1</name>
+        <value>hadoop01:23140</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.admin.address.rm1</name>
+        <value>hadoop01:23141</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.webapp.address.rm2</name>
+        <value>hadoop02:23188</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.webapp.https.address.rm2</name>
+        <value>hadoop02:23188</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.address.rm2</name>
+        <value>hadoop02:23125</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.scheduler.address.rm2</name>
+        <value>hadoop02:23130</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.address.rm2</name>
+        <value>hadoop02:23140</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.admin.address.rm2</name>
+        <value>hadoop02:23141</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.scheduler.address</name>
+        <value>hadoop01:8031</value>
+    </property>
+
+
+    <property>
+        <name>yarn.nodemanager.address</name>
+        <value>0.0.0.0:23998</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.webapp.address</name>
+        <value>0.0.0.0:23999</value>
+    </property>
+	
+	<property>
+        <name>yarn.nodemanager.webapp.https.address</name>
+        <value>0.0.0.0:23999</value>
+    </property>
+
+    <property>
+        <name>mapreduce.shuffle.port</name>
+        <value>23080</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.ha.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.store.class</name>
+        <value>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.zk-address</name>
+        <value>hadoop01:2181,hadoop02:2181,hadoop03:2181</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+	
+	<property>
+        <name>yarn.nodemanager.vmem-pmem-ratio</name>
+        <value>4</value>
+    </property>
+
+    <property>
+        <description>The replication factor for the node manager uploader for the
+            shared cache (10 by default)</description>
+        <name>yarn.sharedcache.nm.uploader.replication.factor</name>
+        <value>3</value>
+    </property>
+
+    <!--  add config pzt -->
+    <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>3072</value>
+        <description>Amount of physical memory, in MB, that can be allocated for containers.Default:8192</description>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>1024</value>
+        <description>The minimum allocation for every container request at the RM, in MBs. Memory requests lower than
+            this will throw a InvalidResourceRequestException.Default:1024
+        </description>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>16384</value>
+        <description>The maximum allocation for every container request at the RM, in MBs. Memory requests higher than
+            this will throw a InvalidResourceRequestException.Default:8192
+        </description>
+    </property>
+	
+	<!-- ResourceManager security configs -->
+	  <property>
+		<name>yarn.resourcemanager.keytab</name>
+		<value>D:\\keytab\\hadoop.keytab</value> <!-- path to the YARN keytab -->
+	  </property>
+	  
+	  <property>
+		<name>yarn.resourcemanager.principal</name>
+		<value>hadoop/_HOST@HADOOP.COM</value>
+	  </property>
+	  
+	  <!-- NodeManager security configs -->
+	  <property>
+		<name>yarn.nodemanager.keytab</name>
+		<value>D:\\keytab\\hadoop.keytab</value> <!-- path to the YARN keytab -->
+	  </property>
+	  
+	  <property>
+		<name>yarn.nodemanager.principal</name>
+		<value>hadoop/_HOST@HADOOP.COM</value>
+	  </property>
+	  
+	  <property>
+		<name>yarn.nodemanager.container-executor.class</name>
+		<value>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</value>
+	  </property>
+	  
+	  <property>
+		<name>yarn.nodemanager.linux-container-executor.group</name>
+		<value>hadoop</value>
+	  </property>
+	  
+	  <property>
+		<name>yarn.resourcemanager.proxy-user-privileges.enabled</name>
+		<value>true</value>
+	  </property>
+	  
+	  <property>
+		<description>ZooKeeper session timeout in milliseconds. Session expiration
+		is managed by the ZooKeeper cluster itself, not by the client. This value is
+		used by the cluster to determine when the client's session expires.
+		Expirations happens when the cluster does not hear from the client within
+		the specified session timeout period (i.e. no heartbeat).</description>
+		<name>yarn.resourcemanager.zk-timeout-ms</name>
+		<value>60000</value>
+	  </property>
+	  
+	  <property>
+		  <description>
+			This configures the HTTP endpoint for Yarn Daemons.The following
+			values are supported:
+			- HTTP_ONLY : Service is provided only on http
+			- HTTPS_ONLY : Service is provided only on https
+		  </description>
+		  <name>yarn.http.policy</name>
+		  <value>HTTPS_ONLY</value>
+	  </property>
+	  
+	   <property>
+		<description>Whether to enable log aggregation. Log aggregation collects
+		  each container's logs and moves these logs onto a file-system, for e.g.
+		  HDFS, after the application completes. Users can configure the
+		  "yarn.nodemanager.remote-app-log-dir" and
+		  "yarn.nodemanager.remote-app-log-dir-suffix" properties to determine
+		  where these logs are moved to. Users can access the logs via the
+		  Application Timeline Server.
+		</description>
+		<name>yarn.log-aggregation-enable</name>
+		<value>true</value>
+	  </property>
+	  
+	  <property>
+		<description>Where to aggregate logs to.</description>
+		<name>yarn.nodemanager.remote-app-log-dir</name>
+		<value>/tmp/logs/yarn-nodemanager</value>
+	  </property>
+
+	  <property>
+		<description>How long to keep aggregation logs before deleting them.  -1 disables. 
+		Be careful set this too small and you will spam the name node.</description>
+		<name>yarn.log-aggregation.retain-seconds</name>
+		<!--7days:604800-->
+		<value>604800</value>
+	  </property> 
+	  
+    <property>
+        <name>yarn.application.classpath</name>
+        <value>
+            /home/hadoop/dwhdp/core/hadoop/etc/*,
+            /home/hadoop/dwhdp/core/hadoop/etc/hadoop/*,
+            /home/hadoop/dwhdp/core/hadoop/lib/*,
+            /home/hadoop/dwhdp/core/hadoop/share/hadoop/common/*,
+            /home/hadoop/dwhdp/core/hadoop/share/hadoop/common/lib/*,
+            /home/hadoop/dwhdp/core/hadoop/share/hadoop/mapreduce/*,
+            /home/hadoop/dwhdp/core/hadoop/share/hadoop/mapreduce/lib/*,
+            /home/hadoop/dwhdp/core/hadoop/share/hadoop/hdfs/*,
+            /home/hadoop/dwhdp/core/hadoop/share/hadoop/hdfs/lib/*,
+            /home/hadoop/dwhdp/core/hadoop/share/hadoop/yarn/*,
+            /home/hadoop/dwhdp/core/hadoop/share/hadoop/yarn/lib/*,
+            /home/hadoop/dwhdp/core/hbase/lib/*
+        </value>
+    </property>
+	
+	<property>
+		<name>yarn.timeline-service.enabled</name>
+		<value>false</value>
+	</property>
+	<property>
+		<name>yarn.timeline-service.http-authentication.type</name>
+		<value>simple</value>
+		<description>
+		  Defines authentication used for the timeline server HTTP endpoint.
+		  Supported values are: simple | kerberos | #AUTHENTICATION_HANDLER_CLASSNAME#
+		</description>
+	</property>
+		  
+  <property>
+	<description>The Kerberos principal for the timeline server.</description>
+	<name>yarn.timeline-service.principal</name>
+	<value>hadoop/_HOST@HADOOP.COM</value>
+  </property>
+
+  <property>
+	<description>The Kerberos keytab for the timeline server.</description>
+	<name>yarn.timeline-service.keytab</name>
+	<value>D:\\keytab\\hadoop.keytab</value>
+  </property>
+	<property>
+		<name>yarn.timeline-service.hostname</name>
+		<value>hadoop01</value>
+	</property>
+	<property>
+		<name>yarn.timeline-service.http-cross-origin.enabled</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>yarn.resourcemanager.system-metrics-publisher.enabled</name>
+		<value>true</value>
+	</property>
+	
+	  
+</configuration>

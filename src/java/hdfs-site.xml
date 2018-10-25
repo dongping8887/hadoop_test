@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+    <property>
+        <name>dfs.nameservices</name>
+        <value>dwhdp</value>
+    </property>
+
+    <property>
+        <name>dfs.ha.namenodes.dwhdp</name>
+        <value>nn1,nn2</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.rpc-address.dwhdp.nn1</name>
+        <value>hadoop01:9000</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.rpc-address.dwhdp.nn2</name>
+        <value>hadoop02:9000</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.http-address.dwhdp.nn1</name>
+        <value>hadoop01:50070</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.http-address.dwhdp.nn2</name>
+        <value>hadoop02:50070</value>
+    </property>
+
+	<property>
+	  <name>dfs.namenode.name.dir</name>
+	  <value>file:/data/disk01/dfs/name,file:/data/disk02/dfs/name,file:/data/disk03/dfs/name,file:/data/disk04/dfs/name</value>
+	  <description>Determines where on the local filesystem the DFS name node
+		  should store the name table(fsimage).  If this is a comma-delimited list
+		  of directories then the name table is replicated in all of the
+		  directories, for redundancy. </description>
+	</property>
+
+    <property>
+        <name>dfs.namenode.name.dir.restore</name>
+        <value>false</value>
+    </property>
+	
+	<property>
+	  <name>dfs.permissions.superusergroup</name>
+	  <value>hadoop</value>
+	  <description>The name of the group of super-users.
+		The value should be a single group name.
+	  </description>
+	</property>
+
+	<property>
+	   <name>dfs.cluster.administrators</name>
+	   <value>hadoop</value>
+	   <description>ACL for the admins, this configuration is used to control
+		 who can access the default servlets in the namenode, etc. The value
+		 should be a comma separated list of users and groups. The user list
+		 comes first and is separated by a space followed by the group list,
+		 e.g. "user1,user2 group1,group2". Both users and groups are optional,
+		 so "user1", " group1", "", "user1 group1", "user1,user2 group1,group2"
+		 are all valid (note the leading space in " group1"). '*' grants access
+		 to all users and groups, e.g. '*', '* ' and ' *' are all valid.
+	   </description>
+	</property>
+	
+	<property>
+	  <name>dfs.namenode.safemode.extension</name>
+	  <value>0</value>
+	  <description>
+		Determines extension of safe mode in milliseconds 
+		after the threshold level is reached.
+	  </description>
+	</property>
+
+    <property>
+        <name>dfs.namenode.shared.edits.dir</name>
+        <value>qjournal://hadoop01:8485;hadoop02:8485;hadoop03:8485/dwhdp</value>
+    </property>
+
+    <property>
+        <name>dfs.journalnode.edits.dir</name>
+        <value>/home/hadoop/dwhdp/data/journal</value>
+    </property>
+
+    <property>
+        <name>dfs.https.port</name>
+        <value>50070</value>
+    </property>
+	
+	<property>
+	  <name>dfs.namenode.https-address</name>
+	  <value>0.0.0.0:50070</value>
+	  <description>The namenode secure http server address and port.</description>
+	</property>
+
+    <property>
+        <name>dfs.journalnode.rpc-address</name>
+        <value>0.0.0.0:8485</value>
+    </property>
+
+    <property>
+        <name>dfs.journalnode.http-address</name>
+        <value>0.0.0.0:8480</value>
+    </property>
+
+    <property>
+        <name>dfs.journalnode.https-address</name>
+        <value>0.0.0.0:8481</value>
+    </property>
+
+    <property>
+        <!--<name>dfs.ha.automatic-failover.enabled.dwhdp</name>-->
+        <name>dfs.ha.automatic-failover.enabled</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>dfs.ha.fencing.methods</name>
+        <value>sshfence</value>
+    </property>
+
+    <property>
+        <name>dfs.ha.fencing.ssh.private-key-files</name>
+        <value>/home/hadoop/.ssh/id_rsa</value>
+        <description>The SSH private key files to use with the builtin sshfence fencer.</description>
+    </property>
+
+    <property>
+        <name>dfs.client.failover.proxy.provider.dwhdp</name>
+        <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+    </property>
+
+    <property>
+        <name>dfs.client.failover.max.attempts</name>
+        <value>15</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:/data/disk01/dfs/data,file:/data/disk02/dfs/data,file:/data/disk03/dfs/data,file:/data/disk04/dfs/data</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.du.reserved</name>
+        <value>1073741824</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.data.dir.perm</name>
+        <value>750</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.socket.write.timeout</name>
+        <value>0</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.handler.count</name>
+        <value>60</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.handler.count</name>
+        <value>30</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.max.xcievers</name>
+        <value>8192</value>
+    </property>
+	
+	<property>
+		<name>dfs.client.block.write.replace-datanode-on-failure.enable</name>
+		<value>false</value>
+	</property>
+
+    <property>
+        <name>dfs.client.socket-timeout</name>
+        <value>600000</value>
+    </property>
+
+    <property>
+        <name>dfs.qjournal.start-segment.timeout.ms</name>
+        <value>90000</value>
+    </property>
+    <property>
+        <name>dfs.qjournal.select-input-streams.timeout.ms</name>
+        <value>90000</value>
+    </property>
+	
+    <property>
+        <name>dfs.qjournal.write-txns.timeout.ms</name>
+        <value>90000</value>
+    </property>
+	
+	<property>
+		<name>dfs.block.access.token.enable</name>
+		<value>true</value>
+		<description>
+			If "true", access tokens are used as capabilities for accessing datanodes.
+			If "false", no access tokens are checked on accessing datanodes.
+		</description>
+	</property>
+	
+	<property>
+	  <name>dfs.http.policy</name>
+	  <value>HTTPS_ONLY</value>
+	  <description>Decide if HTTPS(SSL) is supported on HDFS
+		This configures the HTTP endpoint for HDFS daemons:
+		  The following values are supported:
+		  - HTTP_ONLY : Service is provided only on http
+		  - HTTPS_ONLY : Service is provided only on https
+		  - HTTP_AND_HTTPS : Service is provided both on http and https
+	  </description>
+	</property>
+	
+	<property>
+	  <name>dfs.data.transfer.protection</name>
+	  <value>authentication</value>
+	  <description>
+		A comma-separated list of SASL protection values used for secured
+		connections to the DataNode when reading or writing block data.  Possible
+		values are authentication, integrity and privacy.  authentication means
+		authentication only and no integrity or privacy; integrity implies
+		authentication and integrity are enabled; and privacy implies all of
+		authentication, integrity and privacy are enabled.  If
+		dfs.encrypt.data.transfer is set to true, then it supersedes the setting for
+		dfs.data.transfer.protection and enforces that all connections must use a
+		specialized encrypted SASL handshake.  This property is ignored for
+		connections to a DataNode listening on a privileged port.  In this case, it
+		is assumed that the use of a privileged port establishes sufficient trust.
+	  </description>
+	</property>
+
+	<property>
+	  <name>dfs.encrypt.data.transfer</name>
+	  <value>true</value>
+	  <description>
+		Whether or not actual block data that is read/written from/to HDFS should
+		be encrypted on the wire. This only needs to be set on the NN and DNs,
+		clients will deduce this automatically. It is possible to override this setting 
+		per connection by specifying custom logic via dfs.trustedchannel.resolver.class. 
+	  </description>
+	</property>
+	
+	<property>
+	  <name>dfs.encrypt.data.transfer.algorithm</name>
+	  <value>rc4</value>
+	  <description>
+		This value may be set to either "3des" or "rc4". If nothing is set, then
+		the configured JCE default on the system is used (usually 3DES.) It is
+		widely believed that 3DES is more cryptographically secure, but RC4 is
+		substantially faster.
+		
+		Note that if AES is supported by both the client and server then this 
+		encryption algorithm will only be used to initially transfer keys for AES.
+		(See dfs.encrypt.data.transfer.cipher.suites.)
+	  </description>
+	</property>
+
+	<property>
+		<name>dfs.namenode.keytab.file</name>
+		<value>D:\\keytab\\hadoop.keytab</value>
+		<description>
+			The keytab file used by each NameNode daemon to login as its
+			service principal. The principal name is configured with
+			dfs.namenode.kerberos.principal.
+		</description>
+	</property>
+
+	<property>
+		<name>dfs.namenode.kerberos.principal</name>
+		<value>hadoop/_HOST@HADOOP.COM</value>
+		<description>
+			The NameNode service principal. This is typically set to
+			nn/_HOST@REALM.TLD. Each NameNode will subsitute _HOST with its
+			own fully qualified hostname at startup. The _HOST placeholder
+			allows using the same configuration setting on both NameNodes
+			in an HA setup.
+		</description>
+	</property>
+	
+	<property>
+		<name>dfs.web.authentication.kerberos.principal</name>
+		<value>HTTP/_HOST@HADOOP.COM</value>
+		<description>
+			The server principal used by the NameNode for WebHDFS SPNEGO
+			authentication.
+
+			Required when WebHDFS and security are enabled. In most secure clusters this
+			setting is also used to specify the values for
+			dfs.namenode.kerberos.internal.spnego.principal and
+			dfs.journalnode.kerberos.internal.spnego.principal.
+		</description>
+	</property>
+	
+	<property>
+	  <name>dfs.web.authentication.kerberos.keytab</name>
+	  <value>D:\\keytab\\hadoop.keytab</value>
+	  <description>
+		The keytab file for the principal corresponding to
+		dfs.web.authentication.kerberos.principal.
+	  </description>
+	</property>
+	
+	<property>
+		<name>dfs.datanode.keytab.file</name>
+		<value>D:\\keytab\\hadoop.keytab</value>
+		<description>
+			The keytab file used by each DataNode daemon to login as its
+			service principal. The principal name is configured with
+			dfs.datanode.kerberos.principal.
+		</description>
+	</property>
+	
+	<property>
+	  <name>dfs.datanode.kerberos.principal</name>
+	  <value>hadoop/_HOST@HADOOP.COM</value>
+	  <description>
+		The DataNode service principal. This is typically set to
+		dn/_HOST@REALM.TLD. Each DataNode will subsitute _HOST with its
+		own fully qualified hostname at startup. The _HOST placeholder
+		allows using the same configuration setting on all DataNodes.
+	  </description>
+	</property>
+	
+	<property>
+	  <name>dfs.journalnode.keytab.file</name>
+	  <value>D:\\keytab\\hadoop.keytab</value>
+	  <description>
+		The keytab file used by each JournalNode daemon to login as its
+		service principal. The principal name is configured with
+		dfs.journalnode.kerberos.principal.
+	  </description>
+	</property>
+
+	<property>
+	  <name>dfs.journalnode.kerberos.principal</name>
+	  <value>hadoop/_HOST@HADOOP.COM</value>
+	  <description>
+		The JournalNode service principal. This is typically set to
+		jn/_HOST@REALM.TLD. Each JournalNode will subsitute _HOST with its
+		own fully qualified hostname at startup. The _HOST placeholder
+		allows using the same configuration setting on all JournalNodes.
+	  </description>
+	</property>
+
+	<property>
+	  <name>dfs.journalnode.kerberos.internal.spnego.principal</name>
+	  <value>${dfs.web.authentication.kerberos.principal}</value>
+	  
+	  <description>
+		The server principal used by the JournalNode HTTP Server for
+		SPNEGO authentication when Kerberos security is enabled. This is
+		typically set to HTTP/_HOST@REALM.TLD. The SPNEGO server principal
+		begins with the prefix HTTP/ by convention.
+
+		If the value is '*', the web server will attempt to login with
+		every principal specified in the keytab file
+		dfs.web.authentication.kerberos.keytab.
+
+		For most deployments this can be set to ${dfs.web.authentication.kerberos.principal}
+		i.e use the value of dfs.web.authentication.kerberos.principal.
+	  </description>
+	</property>
+
+</configuration>

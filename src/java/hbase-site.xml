@@ -1,0 +1,529 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration>
+    <property>
+        <name>hbase.rootdir</name>
+        <value>/hbase</value>
+    </property>
+
+    <property>
+        <name>zookeeper.znode.parent</name>
+        <value>/hbase</value>
+    </property>
+
+    <property>
+        <name>hbase.storescanner.parallel.seek.enable</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>hbase.storescanner.parallel.seek.threads</name>
+        <value>20</value>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.thread.compaction.small</name>
+        <value>5</value>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.thread.compaction.large</name>
+        <value>8</value>
+    </property>
+
+    <property>
+        <name>hbase.hregion.majorcompaction</name>
+        <value>0</value>
+    </property>
+
+    <property>
+        <name>hbase.hstore.compaction.min</name>
+        <value>5</value>
+    </property>
+
+    <property>
+        <name>hfile.index.block.max.size</name>
+        <value>65536</value>
+    </property>
+
+    <property>
+        <name>hbase.hstore.compaction.kv.max</name>
+        <value>3000</value>
+    </property>
+
+    <property>
+        <name>hbase.hstore.compaction.max</name>
+        <value>1000</value>
+    </property>
+
+    <property>
+        <name>hbase.hstore.compaction.max.size</name>
+        <value>200000000000</value>
+    </property>
+
+    <property>
+        <name>ipc.server.max.callqueue.length</name>
+        <value>100000</value>
+    </property>
+
+    <property>
+        <name>ipc.client.connection.maxidletime</name>
+        <value>60000</value>
+    </property>
+
+    <property>
+        <name>hbase.hstore.open.and.close.threads.max</name>
+        <value>25</value>
+    </property>
+
+    <property>
+        <name>hbase.hlog.asyncer.number</name>
+        <value>20</value>
+    </property>
+
+    <property>
+        <name>io.native.lib.available</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>hbase.client.keyvalue.maxsize</name>
+        <value>104857600</value>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.restart.on.zk.expire</name>
+        <value>true</value>
+        <description>
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.master.startup.retainassign</name>
+        <value>true</value>
+        <description>
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.master.assignment.timeoutmonitor.timeout</name>
+        <value>600000</value>
+        <description>
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.hregion.memstore.block.multiplier</name>
+        <value>5</value>
+    </property>
+
+    <property>
+        <name>hbase.hstore.blockingWaitTime</name>
+        <value>10000</value>
+    </property>
+
+    <property>
+        <name>hbase.hstore.flusher.count</name>
+        <value>20</value>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.executor.closeregion.threads</name>
+        <value>32</value>
+        <description>
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.executor.openregion.threads</name>
+        <value>32</value>
+        <description>
+        </description>
+    </property>
+	
+	<property>
+        <name>hbase.regionserver.hlog.splitlog.writer.threads</name>
+        <value>10</value>
+    </property>
+
+    <property>
+        <name>zookeeper.session.timeout</name>
+        <value>900000</value>
+    </property>
+
+    <property>
+        <name>dfs.write.packet.size</name>
+        <value>65536</value>
+    </property>
+
+    <property>
+        <name>hbase.hregion.memstore.flush.block.size</name>
+        <value>2147483648</value>
+        <description>
+            Memstore will be flushed to disk if size of the memstore
+            exceeds this number of bytes. Value is checked by a thread that runs
+            every hbase.server.thread.wakefrequency.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.hregion.memstore.mslab.enabled</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>hbase.hregion.memstore.mslab.chunksize</name>
+        <value>2097152</value>
+    </property>
+
+    <property>
+        <name>hbase.hregion.memstore.mslab.max.allocation</name>
+        <value>262144</value>
+    </property>
+
+    <property>
+        <name>ipc.ping.interval</name>
+        <value>600000</value>
+        <description>
+        </description>
+    </property>
+
+    <property>
+        <name>ipc.socket.timeout</name>
+        <value>600000</value>
+        <description>
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.port</name>
+        <value>60025</value>
+        <description>The port the HBase RegionServer binds to.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.info.port</name>
+        <value>60024</value>
+        <description>The port for the HBase RegionServer web UI
+            Set to -1 if you do not want the RegionServer UI to run.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.mapreduce.hfileoutputformat.blocksize</name>
+        <value>262144</value>
+        <description>The mapreduce HFileOutputFormat writes storefiles/hfiles.
+            This is the minimum hfile blocksize to emit. Usually in hbase, writing
+            hfiles, the blocksize is gotten from the table schema (HColumnDescriptor)
+            but in the mapreduce outputformat context, we don't have access to the
+            schema so get blocksize from Configuation. The smaller you make
+            the blocksize, the bigger your index and the less you fetch on a
+            random-access. Set the blocksize down if you have small cells and want
+            faster random-access of individual cells.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.region.split.policy</name>
+        <value>org.apache.hadoop.hbase.regionserver.ConstantSizeRegionSplitPolicy</value>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.lease.queue.count</name>
+        <value>32</value>
+    </property>
+
+    <property>
+        <name>hbase.master.port</name>
+        <value>60000</value>
+    </property>
+
+    <property>
+        <name>hbase.zookeeper.quorum</name>
+        <value>hadoop01,hadoop02,hadoop03</value>
+    </property>
+
+    <property>
+        <name>dfs.client.socket-timeout</name>
+        <value>600000</value>
+    </property>
+
+    <property>
+        <name>hbase.cluster.distributed</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.handler.count</name>
+        <value>100</value>
+        <description>Count of RPC Server instances spun up on RegionServers
+            Same property is used by the Master for count of master handlers.
+            Default is 10.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.optionallogflushinterval</name>
+        <value>10000</value>
+        <description>Sync the HLog to the HDFS after this interval if it has not
+            accumulated enough entries to trigger a sync. Default 1 second. Units:
+            milliseconds.
+        </description>
+    </property>
+
+    <property>
+        <name>hfile.block.cache.size</name>
+        <value>0.0</value>
+        <description>
+            Percentage of maximum heap (-Xmx setting) to allocate to block cache
+            used by HFile/StoreFile. Default of 0.2 means allocate 20%.
+            Set to 0 to disable.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.hstore.blockingStoreFiles</name>
+        <value>30</value>
+        <description>
+            If more than this number of StoreFiles in any one Store
+            (one StoreFile is written per flush of MemStore) then updates are
+            blocked for this HRegion until a compaction is completed, or
+            until hbase.hstore.blockingWaitTime has been exceeded.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.global.memstore.lowerLimit</name>
+        <value>0.2</value>
+        <description>When memstores are being forced to flush to make room in
+            memory, keep flushing until we hit this mark. Defaults to 35% of heap.
+            This value equal to hbase.regionserver.global.memstore.upperLimit causes
+            the minimum possible flushing to occur when updates are blocked due to
+            memstore limiting.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.flushlogentries</name>
+        <value>6000</value>
+        <description>Sync the HLog to HDFS when it has accumulated this many
+            entries. Default 1. Value is checked on every HLog.hflush
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.hstore.blockingWaitTime</name>
+        <value>30000</value>
+        <description>
+            The time an HRegion will block updates for after hitting the StoreFile
+            limit defined by hbase.hstore.blockingStoreFiles.
+            After this time has elapsed, the HRegion will stop blocking updates even
+            if a compaction has not been completed. Default: 90 seconds.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.client.scanner.timeout.period</name>
+        <value>600000</value>
+        <description>Property from ZooKeeper's config zoo.cfg.
+            Limit on number of concurrent connections (at the socket level) that a
+            single client, identified by IP address, may make to a single member of
+            the ZooKeeper ensemble. Set high to avoid zk connection issues running
+            standalone and pseudo-distributed.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.zookeeper.property.maxClientCnxns</name>
+        <value>18192</value>
+        <description>Property from ZooKeeper's config zoo.cfg.
+            Limit on number of concurrent connections (at the socket level) that a
+            single client, identified by IP address, may make to a single member of
+            the ZooKeeper ensemble. Set high to avoid zk connection issues running
+            standalone and pseudo-distributed.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.hregion.max.filesize</name>
+        <value>64424509440</value>
+        <description>
+            Maximum HStoreFile size. If any one of a column families' HStoreFiles has
+            grown to exceed this value, the hosting HRegion is split in two.
+            Default: 256M.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.balancer.period</name>
+        <value>300000000</value>
+        <description>Period at which the region balancer runs in the Master.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.global.memstore.size</name>
+        <value>0.7</value>
+        <description>Maximum size of all memstores in a region server before new
+            updates are blocked and flushes are forced. Defaults to 40% of heap
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.client.retries.number</name>
+        <value>10</value>
+    </property>
+
+    <property>
+        <name>hbase.client.pause</name>
+        <value>50</value>
+    </property>
+
+    <property>
+        <name>hbase.ipc.client.tcpnodelay</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>ipc.server.read.threadpool.size</name>
+        <value>60</value>
+    </property>
+
+    <property>
+        <name>hbase.hfile.readnumber</name>
+        <value>32</value>
+    </property>
+
+    <property>
+        <name>dfs.client.failover.max.attempts</name>
+        <value>15</value>
+        <description>
+            Expert only. The number of client failover attempts that should be
+            made before the failover is considered failed.
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.coprocessor.user.region.classes</name>
+        <value>org.apache.hadoop.hbase.coprocessor.AggregateImplementation</value>
+    </property>
+
+    <property>
+        <name>phoenix.query.timeoutMs</name>
+        <value>3600000</value>
+    </property>
+
+    <property>
+        <name>phoenix.schema.dropMetaData</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>hbase.rpc.timeout</name>
+        <value>3600000</value>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.wal.codec</name>
+        <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>
+    </property>
+
+    <property>
+        <name>hbase.region.server.rpc.scheduler.factory.class</name>
+        <value>org.apache.hadoop.hbase.ipc.PhoenixRpcSchedulerFactory</value>
+        <description>Factory to create the Phoenix RPC Scheduler that uses separate queues for index and metadata
+            updates
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.rpc.controllerfactory.class</name>
+        <value>org.apache.hadoop.hbase.ipc.controller.ServerRpcControllerFactory</value>
+        <description>Factory to create the Phoenix RPC Scheduler that uses separate queues for index and metadata
+            updates
+        </description>
+    </property>
+
+    <property>
+        <name>hbase.master.loadbalancer.class</name>
+        <value>org.apache.phoenix.hbase.index.balancer.IndexLoadBalancer</value>
+    </property>
+
+    <property>
+        <name>hbase.client.scanner.timeout.period</name>
+        <value>36000000</value>
+    </property>
+	
+	<property>
+        <name>hbase.security.authorization</name>
+        <value>true</value>
+      </property>
+	  
+	  <property>
+        <name>hbase.rpc.engine</name>
+        <value>org.apache.hadoop.hbase.ipc.SecureRpcEngine</value>
+      </property>
+	  
+	  <property>
+      <name>hbase.coprocessor.region.classes</name>
+        <value>org.apache.hadoop.hbase.security.token.TokenProvider</value>
+      </property>
+	  
+	<property>
+	 <name>hbase.security.authentication</name>
+	 <value>kerberos</value>
+	</property>
+	
+	<!--
+	<property>
+        <name>hbase.rpc.protection</name>
+        <value>auth</value>
+      </property>
+-->
+	
+	<property>
+	<name>hbase.regionserver.kerberos.principal</name>
+	<value>hadoop/_HOST@HADOOP.COM</value>
+	</property>
+
+	<property>
+	<name>hbase.regionserver.keytab.file</name>
+	<value>D:\\keytab\\hadoop.keytab</value>
+	</property>
+
+	<property>
+	<name>hbase.master.kerberos.principal</name>
+	<value>hadoop/_HOST@HADOOP.COM</value>
+	</property>
+
+	<property>
+	<name>hbase.master.keytab.file</name>
+	<value>D:\\keytab\\hadoop.keytab</value>
+	</property>
+
+	
+    
+
+
+</configuration>

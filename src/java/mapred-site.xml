@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+	<property>
+		<name>mapreduce.framework.name</name>
+		<!--<value>yarn</value>-->
+		<value>yarn-tez</value>
+	</property>
+	<property>
+		<name>mapred.job.tracker</name>
+		<value>hadoop01:9001</value>
+	</property>
+	<property>
+	    <name>mapreduce.jobhistory.address</name>
+	    <!-- 配置实际的主机名和端口-->
+	    <value>hadoop01:10020</value>
+	</property>
+
+	<property>
+	    <name>mapreduce.jobhistory.webapp.https.address</name>
+	    <value>hadoop01:19888</value>
+	</property>
+
+
+<property>
+   <name>mapreduce.task.io.sort.mb</name>
+   <value>512</value>
+</property>
+
+<property>
+   <name>mapreduce.task.io.sort.factor</name>
+   <value>50</value>
+</property>
+
+<property>
+   <name>mapreduce.task.timeout</name>
+   <value>6000000</value>
+</property>
+
+<property>
+   <name>mapreduce.map.sort.spill.percent</name>
+   <value>0.7</value>
+</property>
+
+<property>
+   <name>mapred.job.reuse.jvm.num.tasks</name>
+   <value>-1</value>
+</property>
+
+<property>
+   <name>mapreduce.reduce.shuffle.parallelcopies</name>
+   <value>20</value>
+</property>
+
+<property>
+   <name>mapreduce.map.output.compress</name>
+   <value>true</value>
+</property>
+<!--
+    <property>
+        <name>mapreduce.map.output.compress.codec</name>
+        <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+        <description>If the map outputs are compressed, how should they be
+            compressed?
+        </description>
+    </property>
+-->
+<property>
+    <name>mapreduce.job.log4j-properties-file</name>
+    <value>/home/hadoop/dwhdp/core/hadoop/etc/hadoop/container-log4j.properties</value>
+    <description>Used to override the default settings of log4j in container-log4j.properties
+    for NodeManager. Like container-log4j.properties, it requires certain
+    framework appenders properly defined in this overriden file. The file on the
+    path will be added to distributed cache and classpath. If no-scheme is given
+    in the path, it defaults to point to a log4j file on the local FS.
+    </description>
+  </property>
+
+ <property>
+  <name>mapreduce.map.log.level</name>
+  <value>${mapreduce.log.level}</value>
+  <description>The logging level for the map task. The allowed levels are:
+  OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE and ALL.
+  The setting here could be overridden if "mapreduce.job.log4j-properties-file"
+  is set.
+  </description>
+</property>
+
+<property>
+  <name>mapreduce.reduce.log.level</name>
+  <value>${mapreduce.log.level}</value>
+  <description>The logging level for the reduce task. The allowed levels are:
+  OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE and ALL.
+  The setting here could be overridden if "mapreduce.job.log4j-properties-file"
+  is set.
+  </description>
+</property>
+
+<property>
+  <name>yarn.app.mapreduce.am.log.level</name>
+  <value>${mapreduce.log.level}</value>
+</property>
+
+<property>
+  <name>mapreduce.log.level</name>
+  <value>INFO</value>
+  <description>Custom property. Used for mapreduce.map.log.level and mapreduce.reduce.log.level。
+  </description>
+</property>
+
+<property>
+  <name>mapreduce.reduce.shuffle.memory.limit.percent</name>
+  <value>0.1</value>
+  <description>Expert: Maximum percentage of the in-memory limit that a
+  single shuffle can consume</description>
+</property>
+
+<property>
+   <name>mapreduce.map.java.opts</name>
+   <value>-Xms${mapreduce.map.memory.mb}m -Xmx${mapreduce.map.memory.mb}m $JVM_OPT_BASE -Xloggc:&lt;LOG_DIR&gt;/gc.log</value>
+   <!-- 调试参数：-XX:+TraceClassLoading -XX:+TraceClassLoadingPreorder -XX:+TraceClassUnloading -XX:+TraceClassResolution -XX:+PrintCommandLineFlags-->
+</property>
+
+<property>
+   <name>mapreduce.reduce.java.opts</name>
+   <value>-Xms${mapreduce.reduce.memory.mb}m -Xmx${mapreduce.reduce.memory.mb}m $JVM_OPT_BASE -Xloggc:&lt;LOG_DIR&gt;/gc.log</value>
+</property>
+<property>
+   <name>mapreduce.map.memory.mb</name>
+   <value>2048</value>
+</property>
+
+<property>
+    <name>mapreduce.client.submit.file.replication</name>
+    <value>3</value>
+    <description>The replication level for submitted job files.  This
+        should be around the square root of the number of nodes.
+    </description>
+</property>
+
+<property>
+   <name>yarn.app.mapreduce.am.resource.mb</name>
+   <value>1024</value>
+   <description>The amount of memory the MR AppMaster needs.</description>
+</property>
+
+<property>
+   <name>yarn.app.mapreduce.am.command-opts</name>
+   <value>-Xms${yarn.app.mapreduce.am.resource.mb}m -Xmx${yarn.app.mapreduce.am.resource.mb}m -XX:+TraceClassLoading -XX:+TraceClassUnloading $JVM_OPT_BASE -Dhadoop.root.logfile=syslog -Xloggc:&lt;LOG_DIR&gt;/gc.log</value>
+</property>
+
+<property>
+   <name>mapreduce.reduce.memory.mb</name>
+   <value>2048</value>
+</property>
+
+<property>
+    <name>mapreduce.input.fileinputformat.split.maxsize</name>
+    <value>268435456</value>
+    <description>[custom] Determine the maximum file size for each map, in Byte (Default 256M).</description>
+</property>
+<property>
+    <name>mapreduce.input.fileinputformat.split.minsize.per.node</name>
+    <value>268435456</value>
+    <description>[custom] Decides that each node can be partitioned into a minimum value of a map in Byte (Default 256M).</description>
+</property>
+<property>
+    <name>mapreduce.input.fileinputformat.split.minsize.per.rack</name>
+    <value>268435456</value>
+    <description>[custom] Decides that each rack can be partitioned into a minimum value of a map in Byte (Default 256M).</description>
+</property>
+
+<property>
+   <name>mapreduce.output.fileoutputformat.compress.type</name>
+   <value>BLOCK</value>
+</property>
+
+<property>
+  <name>mapreduce.jobhistory.http.policy</name>
+  <value>HTTPS_ONLY</value>
+  <description>
+    This configures the HTTP endpoint for JobHistoryServer web UI.
+    The following values are supported:
+    - HTTP_ONLY : Service is provided only on http
+    - HTTPS_ONLY : Service is provided only on https
+  </description>
+</property>
+
+<property>
+		<name>mapreduce.jobhistory.keytab</name>
+		<value>D:\\keytab\\hadoop.keytab</value>
+</property>
+<property>
+		<name>mapreduce.jobhistory.principal</name>
+		<value>hadoop/_HOST@HADOOP.COM</value>
+</property>
+
+<property>
+		<name>mapreduce.jobhistory.principal</name>
+		<value>hadoop/_HOST@HADOOP.COM</value>
+</property>
+
+
+</configuration>
